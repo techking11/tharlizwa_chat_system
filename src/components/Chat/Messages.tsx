@@ -1,3 +1,4 @@
+import React from 'react';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import {
   CheckIcon,
@@ -9,7 +10,7 @@ import {
   PlusIcon,
   VideoCameraIcon,
 } from '@heroicons/react/24/outline';
-import React from 'react';
+import EmojiGroup from './EmojiGroup';
 
 const Messages: React.FC = () => {
   return (
@@ -116,8 +117,9 @@ const Messages: React.FC = () => {
           </div>
         </div>
       </div>
+      <EmojiGroup />
       <Popover>
-        <PopoverButton className="m-5 block text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
+        <PopoverButton className="block text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
           <FaceSmileIcon className="size-6" />
         </PopoverButton>
         <PopoverPanel
@@ -129,32 +131,32 @@ const Messages: React.FC = () => {
             <img
               src="/assets/icons/heart.png"
               alt="Heart"
-              className="size-8 scale-100 hover:scale-125 transition-all duration-150"
+              className="size-8 active:scale-100 scale-100 hover:scale-125 transition-all duration-150"
             />
             <img
               src="/assets/icons/haha.png"
               alt="Haha"
-              className="size-8 scale-100 hover:scale-125 transition-all duration-150"
+              className="size-8 active:scale-100 scale-100 hover:scale-125 transition-all duration-150"
             />
             <img
               src="/assets/icons/wow.png"
               alt="Wow"
-              className="size-8 hover:scale-125 transition-all duration-150"
+              className="size-8 active:scale-100 hover:scale-125 transition-all duration-150"
             />
             <img
               src="/assets/icons/sad.png"
               alt="Sad"
-              className="size-8 hover:scale-125 transition-all duration-150"
+              className="size-8 active:scale-100 hover:scale-125 transition-all duration-150"
             />
             <img
               src="/assets/icons/angry.png"
               alt="Angry"
-              className="size-8 hover:scale-125 transition-all duration-150"
+              className="size-8 active:scale-100 hover:scale-125 transition-all duration-150"
             />
             <img
               src="/assets/icons/like.png"
               alt="Like"
-              className="size-8 hover:scale-125 transition-all duration-150"
+              className="size-8 active:scale-100 hover:scale-125 transition-all duration-150"
             />
             <PlusIcon className="size-10 ml-1 p-2 text-gray-300 bg-gray-700 rounded-full hover:bg-gray-600 active:bg-gray-700" />
           </div>
