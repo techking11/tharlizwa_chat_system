@@ -1,5 +1,5 @@
 import React from 'react';
-import ConversationItem from './ConversactionItem';
+import ConversationItem from './ConversationItem';
 
 const Conversation: React.FC = () => {
   const data = [
