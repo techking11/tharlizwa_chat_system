@@ -1,16 +1,15 @@
-import React, { ReactNode } from 'react';
-
-interface TooltipVars {
-  children: ReactNode;
-  text: string;
+interface TooltipProps {
+  children: React.ReactNode;
+  tooltipText: string;
 }
 
-const Tooltip: React.FC<TooltipVars> = ({ children, text }: TooltipVars) => {
+const Tooltip: React.FC<TooltipProps> = ({ children, tooltipText }) => {
   return (
     <div className="relative group">
       {children}
-      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 z-10">
-        {text}
+      <div className="absolute hidden capitalize group-hover:block bg-gray-700 text-white text-sm rounded p-1 w-max z-50 -translate-x-1/2 left-1/2 bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        {tooltipText}
+        <div className="absolute w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-gray-700 left-1/2 -translate-x-1/2 top-full"></div>
       </div>
     </div>
   );
