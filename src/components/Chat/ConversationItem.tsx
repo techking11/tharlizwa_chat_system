@@ -17,7 +17,7 @@ const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
           _class
         }
       >
-        <div className={'flex items-center p-2  cursor-pointer  '}>
+        <div className="flex items-center p-2  cursor-pointer">
           <div className="w-7 h-7 m-1">
             <img
               className="rounded-full"
