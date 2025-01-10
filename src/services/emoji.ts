@@ -1,35 +1,33 @@
 import axios from 'axios';
+import { EmojiGroupTypes } from '../types/emojiGroup/types';
 
-export interface EmojiResult {
-  code: string;
-  character: string;
-  image: string;
-  name: string;
-  group: string;
-  subgroup: string;
-}
+export const emojisGroupList: string[] = [
+  'smileys_emotion',
+  'people_body',
+  'component',
+  'animals_nature',
+  'food_drink',
+  'travel_places',
+  'activities',
+  'objects',
+  'symbols',
+  'flags',
+];
 
-// const emojiGroups: string[] = [
-//   'smileys_emotion',
-//   'people_body',
-//   'component',
-//   'animals_nature',
-//   'food_drink',
-//   'travel_places',
-//   'activities',
-//   'objects',
-//   'symbols',
-//   'flags',
-// ];
-
-export async function EmojiSingle(param: string): Promise<EmojiResult[]> {
+export async function EmojiSingle(
+  group: string,
+  offset: number
+): Promise<EmojiGroupTypes[]> {
   try {
-    const response: EmojiResult[] = await axios
-      .get(`https://api.api-ninjas.com/v1/emoji?group=${param}&offset=100`, {
-        headers: {
-          'x-api-key': import.meta.env.VITE_EMOJI_X_API_KEY,
-        },
-      })
+    const response: EmojiGroupTypes[] = await axios
+      .get(
+        `https://api.api-ninjas.com/v1/emoji?group=${group}&offset=${offset}`,
+        {
+          headers: {
+            'x-api-key': import.meta.env.VITE_EMOJI_X_API_KEY,
+          },
+        }
+      )
       .then((data) => data.data);
     return response;
   } catch (error) {
@@ -37,5 +35,3 @@ export async function EmojiSingle(param: string): Promise<EmojiResult[]> {
     throw error;
   }
 }
-
-export async function EmojiGroups() {}
