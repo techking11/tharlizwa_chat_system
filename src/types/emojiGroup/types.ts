@@ -6,3 +6,10 @@ export interface EmojiGroupTypes {
   group: string;
   subgroup: string;
 }
+
+export interface EmojisState {
+  emojisByGroup: Record<string, EmojiGroupTypes[]>;
+  groupIndex: number;
+  offset: number;
+  hasMore: boolean;
+}
