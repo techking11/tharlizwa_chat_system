@@ -5,8 +5,8 @@ import Messages from './Messages';
 const Chat: React.FC = () => {
   return (
     <div className="">
-      <div className="flex bg-white dark:bg-gray-900">
-        <div className="w-20  text-gray-500 h-screen flex flex-col items-center justify-between py-5">
+      <div className="flex bg-gray-50 dark:bg-gray-900">
+        <div className="w-20 text-gray-500 h-screen flex flex-col items-center justify-between py-5">
           <div className="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,10 +91,10 @@ const Chat: React.FC = () => {
             </svg>
           </div>
         </div>
-        <div className="w-80 h-screen dark:bg-gray-800 bg-gray-100 p-2 hidden md:block">
+        <div className="w-96 h-screen dark:bg-gray-800 bg-gray-100 p-2 hidden md:block">
           <div className="h-full overflow-y-auto">
             <div className="text-xl font-extrabold text-gray-600 dark:text-gray-200 p-3">
-              Chikaa
+              Tharlizwa
             </div>
             <div className="search-chat flex p-3">
               <input

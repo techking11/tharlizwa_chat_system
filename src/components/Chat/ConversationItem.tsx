@@ -1,19 +1,20 @@
 import React from 'react';
+import { formatWithShortUnits } from '../../utils/formatDate';
 
 interface EachSpeech {
   message?: string;
-  time?: string;
+  time: Date;
   name?: string;
   active?: boolean;
 }
 
 const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
-  const _class = speech.active ? 'bg-gray-200' : 'bg-white';
+  const _class = speech.active ? 'bg-gray-200' : 'bg-gray-100 dark:bg-gray-800';
   return (
     <div>
       <div
         className={
-          'conversation-item p-1 dark:bg-gray-700 hover:bg-gray-200 m-1 rounded-md ' +
+          'conversation-item p-1 dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-200 m-1 rounded-md ' +
           _class
         }
       >
@@ -31,10 +32,10 @@ const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
                 {speech.name}
               </div>
               <div className="text-xs text-gray-400 dark:text-gray-300">
-                {speech.time}
+                {formatWithShortUnits(speech.time)}
               </div>
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400  w-40 truncate">
+            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1 w-40 truncate">
               {speech.message}
             </div>
           </div>

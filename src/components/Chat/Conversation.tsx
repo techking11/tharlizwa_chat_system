@@ -4,31 +4,15 @@ import ConversationItem from './ConversationItem';
 const Conversation: React.FC = () => {
   const data = [
     {
-      name: 'Rey Jhon',
-      time: 'just now',
-      message: 'Hey there! Are you finish creating the chat app?',
+      name: 'Myo Aung Htet',
+      time: new Date('1/12/2025'),
+      message: 'နေကောင်းလား',
       active: true,
     },
     {
       name: 'Cherry Ann',
-      time: '12:00',
-      message: 'Hello? Are you available tonight?',
-    },
-    {
-      name: 'Lalaine',
-      time: 'yesterday',
-      message: "I'm thingking of resigning",
-    },
-    { name: 'Princess', time: '1 day ago', message: 'I found a job :)' },
-    {
-      name: 'Charm',
-      time: '1 day ago',
-      message: 'Can you me some chocolates?',
-    },
-    {
-      name: 'Garen',
-      time: '1 day ago',
-      message: "I'm the bravest of all kind",
+      time: new Date('1/12/2025'),
+      message: 'အခု ဘယ်ရောက်နေတာလဲ',
     },
   ];
 
