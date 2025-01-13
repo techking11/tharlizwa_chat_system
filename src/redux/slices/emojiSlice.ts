@@ -1,23 +1,40 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { EmojiGroupTypes } from '../../types/emojiGroup/types';
+import { EmojiGroupTypes, EmojisState } from '../../types/emojiGroup/types';
 
-interface EmojiState {
-  emojis: EmojiGroupTypes[];
-}
-
-const initialState: EmojiState = {
-  emojis: [],
+const initialState: EmojisState = {
+  emojisByGroup: {},
+  groupIndex: 0,
+  offset: 0,
+  hasMore: true,
 };
 
 const emojiSlice = createSlice({
-  name: 'emojis',
+  name: 'emoji',
   initialState,
   reducers: {
-    setEmojis(state, actions: PayloadAction<EmojiGroupTypes[]>) {
-      state.emojis = actions.payload;
+    addEmojis(
+      state,
+      actions: PayloadAction<{ group: string; emojis: EmojiGroupTypes[] }>
+    ) {
+      const { group, emojis } = actions.payload;
+      state.emojisByGroup[group] = [
+        ...(state.emojisByGroup[group] || []),
+        ...emojis,
+      ];
+    },
+    incrementGroupIndex(state) {
+      state.groupIndex += 1;
+    },
+    setOffset(state, actions: PayloadAction<number>) {
+      state.offset = actions.payload;
+    },
+    setHasMore(state, actions: PayloadAction<boolean>) {
+      state.hasMore = actions.payload;
     },
   },
 });
 
-export const { setEmojis } = emojiSlice.actions;
+export const { addEmojis, incrementGroupIndex, setOffset, setHasMore } =
+  emojiSlice.actions;
+
 export default emojiSlice.reducer;

@@ -3,7 +3,7 @@ import emojisReducer from './slices/emojiSlice';
 
 const store = configureStore({
   reducer: {
-    emojis: emojisReducer,
+    emoji: emojisReducer,
   },
 });
 

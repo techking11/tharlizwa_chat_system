@@ -14,24 +14,18 @@ export const emojisGroupList: string[] = [
   'flags',
 ];
 
-export async function EmojiSingle(
-  group: string,
-  offset: number
-): Promise<EmojiGroupTypes[]> {
+export async function fetchEmojis(group: string, offset: number) {
   try {
-    const response: EmojiGroupTypes[] = await axios
-      .get(
-        `https://api.api-ninjas.com/v1/emoji?group=${group}&offset=${offset}`,
-        {
-          headers: {
-            'x-api-key': import.meta.env.VITE_EMOJI_X_API_KEY,
-          },
-        }
-      )
-      .then((data) => data.data);
-    return response;
+    const { data } = await axios.get<EmojiGroupTypes[]>(
+      `https://api.api-ninjas.com/v1/emoji?group=${group}&offset=${offset}`,
+      {
+        headers: {
+          'x-api-key': import.meta.env.VITE_EMOJI_X_API_KEY,
+        },
+      }
+    );
+    return data;
   } catch (error) {
     console.log(error);
-    throw error;
   }
 }
