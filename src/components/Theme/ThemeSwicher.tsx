@@ -4,8 +4,6 @@ import { useTheme } from '../../hooks/useTheme';
 const ThemeSwitcher: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
-  console.log(theme);
-
   return (
     <button
       onClick={toggleTheme}

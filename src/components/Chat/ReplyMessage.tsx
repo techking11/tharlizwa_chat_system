@@ -36,7 +36,7 @@ const ReplyMessage: React.FC = () => {
               <FaceSmileIcon className="size-6 text-gray-500" />,
             </EmojiPopover>
           </div>
-          <div className="flex items-end w-auto bg-purple-300 dark:bg-gray-800 mx-3 my-1 rounded-2xl rounded-br-none">
+          <div className="flex items-end w-auto bg-blue-100 dark:bg-gray-800 mx-3 my-1 rounded-2xl rounded-br-none">
             <div className="p-3">
               <div className="text-gray-700 dark:text-gray-200">
                 {message.text}

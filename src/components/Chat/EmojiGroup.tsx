@@ -9,8 +9,10 @@ import EmojiSearchBar from './EmojiSearchbar';
 import EmojiCategory from './EmojiCategory';
 import EmojiIconLinks from './EmojiIconLinks';
 import EmojisSection from './EmojisSection';
+import { useEmojiGroup } from '../../hooks/useEmojiGroup';
 
 const EmojiGroup: React.FC = () => {
+  const { isVisible } = useEmojiGroup();
   const dispatch = useDispatch();
   const { emojisByGroup, groupIndex, offset } = useSelector(
     (state: RootState) => state.emoji
@@ -34,12 +36,14 @@ const EmojiGroup: React.FC = () => {
     }
   }, [data, dispatch, currentGroup, offset, groupIndex]);
 
+  if (!isVisible) return null;
+
   return (
     <div className="relative text-gray-700">
-      <div className="absolute bottom-0 inline-block w-96 py-1 mb-10 -ml-32 text-white bg-gray-700 shadow-md dark:bg-gray-700 rounded-2xl">
+      <div className="absolute bottom-0 inline-block w-96 py-1 mb-10 -ml-32 text-white bg-gray-50 shadow-md dark:bg-gray-700 rounded-lg">
         <div className="w-full max-w-md px-3 z-10">
           <EmojiSearchBar />
-          <div className="overflow-y-scroll overflow-x-hidden scroll-smooth h-96">
+          <div className="scrollbar-thin overflow-y-scroll overflow-x-hidden scroll-smooth h-96">
             <EmojisSection />
             <div className="py-1 flex flex-wrap gap-3 cursor-pointer">
               {Object.entries(emojisByGroup).map(([groupName, groupEmojis]) => (
@@ -53,7 +57,6 @@ const EmojiGroup: React.FC = () => {
           </div>
         </div>
         <EmojiIconLinks />
-        <span className="absolute -bottom-1 left-[50%] right-0 w-5 h-5 -mb-1 transform rotate-45 bg-gray-700 dark:bg-gray-700"></span>
       </div>
     </div>
   );

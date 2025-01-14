@@ -9,16 +9,16 @@ interface EachSpeech {
 }
 
 const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
-  const _class = speech.active ? 'bg-gray-200' : 'bg-gray-100 dark:bg-gray-800';
+  const _class = speech.active ? 'bg-blue-100' : 'bg-gray-50 dark:bg-gray-800';
   return (
     <div>
       <div
         className={
-          'conversation-item p-1 dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-200 m-1 rounded-md ' +
+          'conversation-item dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 mx-3 my-1 rounded-lg ' +
           _class
         }
       >
-        <div className="flex items-center p-2  cursor-pointer">
+        <div className="flex items-center p-1 cursor-pointer">
           <div className="w-7 h-7 m-1">
             <img
               className="rounded-full"

@@ -1,5 +1,8 @@
 // import { useState } from 'react';
 import './App.css';
+import EmojiProvider from './contexts/EmojiContext';
+import ReplyProvider from './contexts/ReplyContext';
+import RightInfoProvider from './contexts/RightInfoContext';
 import ThemeProvider from './contexts/ThemeContext';
 import MainLayout from './layouts/MainLayout';
 
@@ -8,7 +11,13 @@ function App() {
 
   return (
     <ThemeProvider>
-      <MainLayout />
+      <RightInfoProvider>
+        <ReplyProvider>
+          <EmojiProvider>
+            <MainLayout />
+          </EmojiProvider>
+        </ReplyProvider>
+      </RightInfoProvider>
     </ThemeProvider>
   );
 }

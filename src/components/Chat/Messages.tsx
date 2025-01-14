@@ -2,6 +2,7 @@ import React from 'react';
 import {
   FaceSmileIcon,
   InformationCircleIcon,
+  MicrophoneIcon,
   PaperAirplaneIcon,
   PhoneArrowUpRightIcon,
   VideoCameraIcon,
@@ -9,14 +10,16 @@ import {
 
 import SendMessage from './SendMessage';
 import ReplyMessage from './ReplyMessage';
-import ThemeSwitcher from '../Theme/ThemeSwicher';
+// import ThemeSwitcher from '../Theme/ThemeSwicher';
 import ReplyAlert from './ReplyAlert';
-// import EmojiGroup from './EmojiGroup';
+import EmojiGroup from './EmojiGroup';
+import { useRightInfo } from '../../hooks/useRightInfo';
 
 const Messages: React.FC = () => {
+  const { showVisible } = useRightInfo();
   return (
-    <div className="flex-grow h-full flex flex-col">
-      <div className="w-full h-15 p-1 bg-purple-600 dark:bg-gray-800 shadow-md rounded-xl rounded-bl-none rounded-br-none">
+    <div className="h-full flex flex-col flex-grow">
+      <div className="w-full h-15 p-1 bg-gray-50 dark:bg-gray-800 border-b">
         <div className="flex p-2 align-middle items-center">
           <div className="p-2 md:hidden rounded-full mr-1 hover:bg-purple-500 text-white">
             <svg
@@ -42,43 +45,50 @@ const Messages: React.FC = () => {
             />
           </div>
           <div className="flex-grow p-2">
-            <div className="text-md text-gray-50 font-semibold">
+            <div className="text-md text-gray-700 font-semibold">
               Rey Jhon A. Baquirin
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center mt-1">
               <div className="w-2 h-2 bg-green-300 rounded-full"></div>
-              <div className="text-xs text-gray-50 ml-1">Online</div>
+              <div className="text-xs text-gray-70 ml-1">Online</div>
             </div>
           </div>
-          <div className="p-2 text-white cursor-pointer hover:bg-purple-500 rounded-full flex gap-5">
-            <PhoneArrowUpRightIcon className="size-5" />
-            <VideoCameraIcon className="size-5" />
-            <InformationCircleIcon className="size-5" />
+          <div className="p-2 text-white cursor-pointer rounded-full flex gap-1">
+            <PhoneArrowUpRightIcon className="size-9 p-2 rounded-full text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
+            <VideoCameraIcon className="size-9 p-2 rounded-full text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
+            <button onClick={showVisible}>
+              <InformationCircleIcon className="size-9 p-2 rounded-full text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
+            </button>
           </div>
         </div>
       </div>
 
-      <ThemeSwitcher />
+      {/* <ThemeSwitcher /> */}
 
-      <div className="w-full flex-grow bg-gray-100 dark:bg-gray-900 my-2 p-2 overflow-y-auto">
+      <div className="w-full px-[10%] flex-grow bg-gray-50 dark:bg-gray-900 my-2 scrollbar-thin overflow-y-auto">
+        <SendMessage />
+        <ReplyMessage />
+        <SendMessage />
+        <ReplyMessage />
         <SendMessage />
         <ReplyMessage />
       </div>
-      {/* <EmojiGroup /> */}
+      <EmojiGroup />
       <ReplyAlert />
-      <div className="h-15  p-3 rounded-xl rounded-tr-none rounded-tl-none bg-gray-100 dark:bg-gray-800">
+      <div className="h-15 p-1 border-t bg-gray-50 dark:bg-gray-800">
         <div className="flex items-center">
           <div className="p-2 text-gray-600 dark:text-gray-200 ">
             <FaceSmileIcon className="size-6" />
           </div>
           <div className="search-chat flex flex-grow p-2">
             <input
-              className="input text-gray-700 dark:text-gray-200 text-sm p-5 focus:outline-none bg-gray-100 dark:bg-gray-800  flex-grow rounded-l-md"
+              className="input text-gray-700 dark:text-gray-200 text-sm p-5 focus:outline-none bg-gray-50 dark:bg-gray-800  flex-grow rounded-l-md"
               type="text"
               placeholder="Type your message ..."
             />
-            <div className="bg-gray-100 dark:bg-gray-800 dark:text-gray-200  flex justify-center items-center pr-3 text-gray-400 rounded-r-md">
-              <PaperAirplaneIcon className="size-6" />
+            <div className="dark:text-gray-200 flex justify-center items-center pr-3 text-gray-50 rounded-r-md">
+              <PaperAirplaneIcon className="size-9 p-2 bg-blue-500 rounded-full cursor-pointer" />
+              <MicrophoneIcon className="size-9 p-2 bg-blue-500 rounded-full cursor-pointer hidden" />
             </div>
           </div>
         </div>

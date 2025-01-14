@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { PlusIcon } from '@heroicons/react/24/outline';
+import { useEmojiGroup } from '../../hooks/useEmojiGroup';
 
 const emojiIcons = [
   { src: '/assets/icons/heart.png', alt: 'Heart' },
@@ -16,6 +17,12 @@ interface EmojiPopoverProps {
 }
 
 const EmojiPopover: React.FC<EmojiPopoverProps> = ({ children }) => {
+  const { toggleVisible } = useEmojiGroup();
+  const fetchVisible = (length: number): void => {
+    if (length) {
+      toggleVisible();
+    }
+  };
   return (
     <Popover>
       <PopoverButton className="block text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
@@ -35,7 +42,9 @@ const EmojiPopover: React.FC<EmojiPopoverProps> = ({ children }) => {
               className="size-7 scale-100 hover:scale-125 transition-all duration-150"
             />
           ))}
-          <PlusIcon className="size-8 ml-1 p-2 text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-200 dark:active:bg-gray-700" />
+          <button onClick={() => fetchVisible(emojiIcons.length - 1)}>
+            <PlusIcon className="size-8 ml-1 p-2 text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-200 dark:active:bg-gray-700" />
+          </button>
         </div>
       </PopoverPanel>
     </Popover>

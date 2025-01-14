@@ -14,10 +14,60 @@ const Conversation: React.FC = () => {
       time: new Date('1/12/2025'),
       message: 'အခု ဘယ်ရောက်နေတာလဲ',
     },
+    {
+      name: 'Myo Aung Htet',
+      time: new Date('1/12/2025'),
+      message: 'နေကောင်းလား',
+    },
+    {
+      name: 'Cherry Ann',
+      time: new Date('1/12/2025'),
+      message: 'အခု ဘယ်ရောက်နေတာလဲ',
+    },
+    {
+      name: 'Myo Aung Htet',
+      time: new Date('1/12/2025'),
+      message: 'နေကောင်းလား',
+    },
+    {
+      name: 'Cherry Ann',
+      time: new Date('1/12/2025'),
+      message: 'အခု ဘယ်ရောက်နေတာလဲ',
+    },
+    {
+      name: 'Myo Aung Htet',
+      time: new Date('1/12/2025'),
+      message: 'နေကောင်းလား',
+    },
+    {
+      name: 'Cherry Ann',
+      time: new Date('1/12/2025'),
+      message: 'အခု ဘယ်ရောက်နေတာလဲ',
+    },
+    {
+      name: 'Myo Aung Htet',
+      time: new Date('1/12/2025'),
+      message: 'နေကောင်းလား',
+    },
+    {
+      name: 'Cherry Ann',
+      time: new Date('1/12/2025'),
+      message: 'အခု ဘယ်ရောက်နေတာလဲ',
+    },
+    {
+      name: 'Myo Aung Htet',
+      time: new Date('1/12/2025'),
+      message: 'နေကောင်းလား',
+    },
+    {
+      name: 'Cherry Ann',
+      time: new Date('1/12/2025'),
+      message: 'အခု ဘယ်ရောက်နေတာလဲ',
+    },
   ];
 
   return (
-    <div className="p-1">
+    <>
       {data.map((item, index: number) => (
         <ConversationItem
           key={index}
@@ -27,7 +77,7 @@ const Conversation: React.FC = () => {
           active={item.active}
         />
       ))}
-    </div>
+    </>
   );
 };
 
