@@ -1,0 +1,173 @@
+interface PersonInfo {
+  id: number;
+  name: string;
+  profile: string;
+  time: string;
+  message: string;
+  active: boolean;
+}
+
+const users: PersonInfo[] = [
+  {
+    id: 1,
+    name: 'Myo Aung Htet',
+    profile: 'https://randomuser.me/api/portraits/women/32.jpg',
+    time: '2025-01-15T03:35:34Z',
+    message: 'နေကောင်းလား',
+    active: true,
+  },
+  {
+    id: 2,
+    name: 'Aye Chan Nyein',
+    profile: 'https://randomuser.me/api/portraits/women/2.jpg',
+    time: '2025-01-14T08:35:42Z',
+    message: 'အားလုံးအဆင်ပြေပါသလား?',
+    active: false,
+  },
+  {
+    id: 3,
+    name: 'Zaw Zaw Tun',
+    profile: 'https://randomuser.me/api/portraits/men/3.jpg',
+    time: '2025-01-13T08:47:18Z',
+    message: 'မင်္ဂလာပါ!',
+    active: false,
+  },
+  {
+    id: 4,
+    name: 'Nanda Linn',
+    profile: 'https://randomuser.me/api/portraits/women/40.jpg',
+    time: '2025-01-12T09:00:05Z',
+    message: 'ဆွေးနွေးမှုအချိန်ရောက်ပါသလား?',
+    active: false,
+  },
+  {
+    id: 5,
+    name: 'Khin Maung Zaw',
+    profile: 'https://randomuser.me/api/portraits/men/5.jpg',
+    time: '2025-01-11T09:15:12Z',
+    message: 'ပရိုဂျက်အခြေအနေစစ်ဆေးနေပါတယ်။',
+    active: false,
+  },
+  {
+    id: 6,
+    name: 'Win Myat Aye',
+    profile: 'https://randomuser.me/api/portraits/women/63.jpg',
+    time: '2025-01-10T09:30:03Z',
+    message: 'အလုပ်ကိုပြောဆိုရင်လဲနောက်ပြီးစောင့်ဆိုင်းနေပါတယ်။',
+    active: false,
+  },
+  {
+    id: 7,
+    name: 'Aung Ko Ko',
+    profile: 'https://randomuser.me/api/portraits/men/7.jpg',
+    time: '2025-01-15T09:45:44Z',
+    message: 'စာရွက်စာတမ်းကိုအသစ်တင်လိုက်ပါပြီ။',
+    active: false,
+  },
+  {
+    id: 8,
+    name: 'Thet Htar Aung',
+    profile: 'https://randomuser.me/api/portraits/women/8.jpg',
+    time: '2025-01-14T10:00:18Z',
+    message: 'ဖွင့်လှစ်တဲ့ feature ရဲ့ အဆင့်ကို ကြည့်လိုက်ပါ။',
+    active: false,
+  },
+  {
+    id: 9,
+    name: 'Soe Aung',
+    profile: 'https://randomuser.me/api/portraits/men/9.jpg',
+    time: '2025-01-13T10:30:22Z',
+    message: 'call မှာရှိနေပါလိမ့်မယ်။ ပျော်ပါစေ၊ ပြန်ဖတ်ပါ။',
+    active: false,
+  },
+  {
+    id: 10,
+    name: 'Htet Wai Aung',
+    profile: 'https://randomuser.me/api/portraits/women/10.jpg',
+    time: '2025-01-12T10:50:11Z',
+    message: 'UI ကိုတိုးတက်စေချင်ပါတယ်။',
+    active: false,
+  },
+  {
+    id: 11,
+    name: 'Aung Zaw Lin',
+    profile: 'https://randomuser.me/api/portraits/women/12.jpg',
+    time: '2025-01-10T11:15:31Z',
+    message: 'နောက်ဆုံးပြင်ဆင်ချက်ကို push လုပ်ထားပါတယ်။',
+    active: false,
+  },
+  {
+    id: 12,
+    name: 'Nanda Aung',
+    profile: 'https://randomuser.me/api/portraits/men/13.jpg',
+    time: '2025-01-15T11:40:18Z',
+    message: 'backend ပြဿနာတွေကိုရှာဖွေနေပါတယ်။',
+    active: false,
+  },
+  {
+    id: 13,
+    name: 'Khaing Thandar',
+    profile: 'https://randomuser.me/api/portraits/women/14.jpg',
+    time: '2025-01-14T12:00:00Z',
+    message: 'လောင်းခွဲပြီးနောက်တွင် sync လုပ်ကြပါ။',
+    active: false,
+  },
+  {
+    id: 14,
+    name: 'Zaw Lin',
+    profile: 'https://randomuser.me/api/portraits/men/15.jpg',
+    time: '2025-01-13T12:20:10Z',
+    message: 'Code ကိုပြန်လည်ပြုပြင်နေပါသည်။',
+    active: false,
+  },
+  {
+    id: 15,
+    name: 'Maung Aung',
+    profile: 'https://randomuser.me/api/portraits/women/16.jpg',
+    time: '2025-01-12T12:30:45Z',
+    message: 'အဆင့်အသစ်များအတွက် ဒီဇိုင်းပေးပါ။',
+    active: false,
+  },
+  {
+    id: 16,
+    name: 'Wai Yan Aung',
+    profile: 'https://randomuser.me/api/portraits/women/17.jpg',
+    time: '2025-01-11T12:45:50Z',
+    message: 'project ရဲ့အချိန်ဇယားအတိုင်းတက်တက်နေပါသလား?',
+    active: false,
+  },
+  {
+    id: 17,
+    name: 'Aye Chan Aung',
+    profile: 'https://randomuser.me/api/portraits/women/18.jpg',
+    time: '2025-01-10T13:00:12Z',
+    message: 'နောက်ဆုံးအစည်းအဝေးမှတ်တမ်းများကိုပြန်လည်ပြုစုပါ။',
+    active: false,
+  },
+  {
+    id: 18,
+    name: 'Htun Zaw Aung',
+    profile: 'https://randomuser.me/api/portraits/men/19.jpg',
+    time: '2025-01-15T13:20:05Z',
+    message: 'နာရီတစ်နာရီအတွင်းတောင်းဆိုပါမည်။',
+    active: false,
+  },
+  {
+    id: 19,
+    name: 'Min Htet',
+    profile: 'https://randomuser.me/api/portraits/men/20.jpg',
+    time: '2025-01-14T13:45:15Z',
+    message: 'backend အခြေအနေများကိုပြန်လည်စစ်ဆေးပါ။',
+    active: false,
+  },
+  {
+    id: 20,
+    name: 'Thiri Htet',
+    profile: 'https://randomuser.me/api/portraits/men/11.jpg',
+    time: '2025-01-11T11:05:55Z',
+    message: 'စမ်းသပ်မှုဆိုင်ရာအဆင့်များကို ဘယ်လိုတင်ဆက်မလဲ?',
+    active: false,
+  },
+];
+
+export default users;
