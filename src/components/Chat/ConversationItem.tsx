@@ -1,42 +1,48 @@
 import React from 'react';
 import { formatWithShortUnits } from '../../utils/formatDate';
+import MessageSignal from './MessageSignal';
 
 interface EachSpeech {
-  message?: string;
-  time: Date;
   name?: string;
+  profile?: string;
+  time: string;
+  message: string;
   active?: boolean;
 }
 
 const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
-  const _class = speech.active ? 'bg-blue-100' : 'bg-gray-50 dark:bg-gray-800';
+  const _class = speech.active ? 'bg-blue-100' : 'bg-white dark:bg-gray-800';
   return (
     <div>
       <div
         className={
-          'conversation-item dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 mx-3 my-1 rounded-lg ' +
+          'dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 mb-1 rounded ' +
           _class
         }
+        title={speech.message}
       >
-        <div className="flex items-center p-1 cursor-pointer">
-          <div className="w-7 h-7 m-1">
+        <div className="flex items-center px-1 py-1.5 cursor-pointer">
+          <div className="size-12 m-1">
             <img
               className="rounded-full"
-              src="https://cdn.pixabay.com/photo/2017/01/31/21/23/avatar-2027366_960_720.png"
-              alt="avatar"
+              src={speech.profile}
+              alt={speech.name}
             />
           </div>
-          <div className="flex-grow p-2">
+          <div className="flex-grow px-2">
             <div className="flex justify-between text-md ">
-              <div className="text-sm font-medium text-gray-700 dark:text-gray-200">
+              <div className="text-sm font-medium text-gray-800 dark:text-gray-200">
                 {speech.name}
               </div>
-              <div className="text-xs text-gray-400 dark:text-gray-300">
+              <div className="text-xs text-gray-500 dark:text-gray-300 flex pr-2">
+                <MessageSignal /> &ensp;
                 {formatWithShortUnits(speech.time)}
               </div>
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1 w-40 truncate">
-              {speech.message}
+            <div className="text-xs text-gray-600 py-1 dark:text-gray-400 mt-1">
+              {speech.message?.length > 45
+                ? speech.message?.substring(0, 45) + '...'
+                : speech.message}
             </div>
           </div>
         </div>

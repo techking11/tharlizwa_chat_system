@@ -1,83 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ConversationItem from './ConversationItem';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import userList from '../../data/users';
+import { addUsers } from '../../redux/slices/userSlice';
 
 const Conversation: React.FC = () => {
-  const data = [
-    {
-      name: 'Myo Aung Htet',
-      time: new Date('1/12/2025'),
-      message: 'နေကောင်းလား',
-      active: true,
-    },
-    {
-      name: 'Cherry Ann',
-      time: new Date('1/12/2025'),
-      message: 'အခု ဘယ်ရောက်နေတာလဲ',
-    },
-    {
-      name: 'Myo Aung Htet',
-      time: new Date('1/12/2025'),
-      message: 'နေကောင်းလား',
-    },
-    {
-      name: 'Cherry Ann',
-      time: new Date('1/12/2025'),
-      message: 'အခု ဘယ်ရောက်နေတာလဲ',
-    },
-    {
-      name: 'Myo Aung Htet',
-      time: new Date('1/12/2025'),
-      message: 'နေကောင်းလား',
-    },
-    {
-      name: 'Cherry Ann',
-      time: new Date('1/12/2025'),
-      message: 'အခု ဘယ်ရောက်နေတာလဲ',
-    },
-    {
-      name: 'Myo Aung Htet',
-      time: new Date('1/12/2025'),
-      message: 'နေကောင်းလား',
-    },
-    {
-      name: 'Cherry Ann',
-      time: new Date('1/12/2025'),
-      message: 'အခု ဘယ်ရောက်နေတာလဲ',
-    },
-    {
-      name: 'Myo Aung Htet',
-      time: new Date('1/12/2025'),
-      message: 'နေကောင်းလား',
-    },
-    {
-      name: 'Cherry Ann',
-      time: new Date('1/12/2025'),
-      message: 'အခု ဘယ်ရောက်နေတာလဲ',
-    },
-    {
-      name: 'Myo Aung Htet',
-      time: new Date('1/12/2025'),
-      message: 'နေကောင်းလား',
-    },
-    {
-      name: 'Cherry Ann',
-      time: new Date('1/12/2025'),
-      message: 'အခု ဘယ်ရောက်နေတာလဲ',
-    },
-  ];
+  const { users } = useSelector((state: RootState) => state.user);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(addUsers(userList));
+  }, []);
   return (
-    <>
-      {data.map((item, index: number) => (
+    <div className="pl-3 pr-1.5 h-[85%] overflow-y-scroll scrollbar-thin mr-1">
+      {users.map((item, index: number) => (
         <ConversationItem
           key={index}
+          profile={item.profile}
+          name={item.name}
           message={item.message}
           time={item.time}
-          name={item.name}
           active={item.active}
         />
       ))}
-    </>
+    </div>
   );
 };
 

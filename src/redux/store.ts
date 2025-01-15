@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import emojisReducer from './slices/emojiSlice';
+import userReducer from './slices/userSlice';
 
 const store = configureStore({
   reducer: {
     emoji: emojisReducer,
+    user: userReducer,
   },
 });
 

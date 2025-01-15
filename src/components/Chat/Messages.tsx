@@ -12,14 +12,14 @@ import SendMessage from './SendMessage';
 import ReplyMessage from './ReplyMessage';
 // import ThemeSwitcher from '../Theme/ThemeSwicher';
 import ReplyAlert from './ReplyAlert';
-import EmojiGroup from './EmojiGroup';
+// import EmojiGroup from './EmojiGroup';
 import { useRightInfo } from '../../hooks/useRightInfo';
 
 const Messages: React.FC = () => {
   const { showVisible } = useRightInfo();
   return (
-    <div className="h-full flex flex-col flex-grow">
-      <div className="w-full h-15 p-1 bg-gray-50 dark:bg-gray-800 border-b">
+    <div className="h-full flex flex-col flex-grow pr-1">
+      <div className="w-full h-15 p-1 bg-white dark:bg-gray-800 border-b">
         <div className="flex p-2 align-middle items-center">
           <div className="p-2 md:hidden rounded-full mr-1 hover:bg-purple-500 text-white">
             <svg
@@ -65,7 +65,7 @@ const Messages: React.FC = () => {
 
       {/* <ThemeSwitcher /> */}
 
-      <div className="w-full px-[10%] flex-grow bg-gray-50 dark:bg-gray-900 my-2 scrollbar-thin overflow-y-auto">
+      <div className="w-full px-[10%] flex-grow bg-white dark:bg-gray-900 my-2 overflow-y-scroll scrollbar-thin">
         <SendMessage />
         <ReplyMessage />
         <SendMessage />
@@ -73,16 +73,16 @@ const Messages: React.FC = () => {
         <SendMessage />
         <ReplyMessage />
       </div>
-      <EmojiGroup />
+      {/* <EmojiGroup /> */}
       <ReplyAlert />
-      <div className="h-15 p-1 border-t bg-gray-50 dark:bg-gray-800">
+      <div className="h-15 p-1 border-t bg-white dark:bg-gray-800">
         <div className="flex items-center">
           <div className="p-2 text-gray-600 dark:text-gray-200 ">
             <FaceSmileIcon className="size-6" />
           </div>
           <div className="search-chat flex flex-grow p-2">
             <input
-              className="input text-gray-700 dark:text-gray-200 text-sm p-5 focus:outline-none bg-gray-50 dark:bg-gray-800  flex-grow rounded-l-md"
+              className="input text-gray-700 dark:text-gray-200 text-sm p-5 focus:outline-none bg-white dark:bg-gray-800  flex-grow rounded-l-md"
               type="text"
               placeholder="Type your message ..."
             />

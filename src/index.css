@@ -12,12 +12,12 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background: #d2d3d6;
+    background: #d1d5db;
     border-radius: 10px;
   }
 
   .scrollbar-thin:hover::-webkit-scrollbar-thumb {
-    background: #d2d3d6;
+    background: #d1d5db;
   }
 }
 

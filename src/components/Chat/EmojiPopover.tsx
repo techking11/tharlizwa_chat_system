@@ -31,7 +31,7 @@ const EmojiPopover: React.FC<EmojiPopoverProps> = ({ children }) => {
       <PopoverPanel
         transition
         anchor="top"
-        className="divide-y divide-white/5 rounded-full shadow-md bg-gray-50 dark:bg-gray-800 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+        className="divide-y divide-white/5 rounded-full shadow-md bg-white dark:bg-gray-800 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
       >
         <div className="p-3 flex gap-3 cursor-pointer">
           {emojiIcons.map((icon, index: number) => (

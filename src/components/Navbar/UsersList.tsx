@@ -3,18 +3,18 @@ import Conversation from '../Chat/Conversation';
 
 function UsersList(): React.ReactElement {
   return (
-    <div className="w-96 h-screen dark:bg-gray-800 bg-gray-50 hidden md:block py-3 border-x">
-      <div className="h-full scrollbar-thin overflow-y-scroll">
+    <div className="w-[23%] h-screen dark:bg-gray-800 bg-white hidden md:block py-3 border-x">
+      <div className="h-full">
         <div className="text-xl font-extrabold text-gray-600 dark:text-gray-200 px-3">
           Tharlizwa
         </div>
         <div className="search-chat flex p-3">
           <input
-            className="input text-gray-700 dark:text-gray-200 text-sm p-3 focus:outline-none bg-gray-200 dark:bg-gray-700 w-full rounded-l-md"
+            className="input text-gray-500 dark:text-gray-200 text-sm p-3 focus:outline-none bg-gray-100 dark:bg-gray-700 w-full rounded"
             type="text"
             placeholder="Search Messages"
           />
-          <div className="bg-gray-200 dark:bg-gray-700 flex justify-center items-center pr-3 text-gray-400 rounded-r-md">
+          <div className="bg-gray-100 dark:bg-gray-700 flex justify-center items-center pr-3 text-gray-400 rounded-r-md">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-5"

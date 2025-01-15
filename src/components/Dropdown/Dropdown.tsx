@@ -36,7 +36,7 @@ const MultiOpenAccordion: React.FC = () => {
         <div key={index} className="">
           <button
             onClick={() => toggleAccordion(index)}
-            className="flex justify-between items-center py-5 w-full bg-gray-50 px-5 font-medium text-gray-700 hover:bg-gray-100"
+            className="flex justify-between items-center py-5 w-full bg-white px-5 font-medium text-gray-700 hover:bg-gray-100"
           >
             {item.title}
             <span

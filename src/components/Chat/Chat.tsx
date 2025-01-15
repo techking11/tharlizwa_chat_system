@@ -6,7 +6,7 @@ import RightInfo from '../Navbar/RightInfo';
 
 const Chat: React.FC = () => {
   return (
-    <div className="flex flex-row bg-gray-50 dark:bg-gray-900">
+    <div className="flex flex-row bg-white dark:bg-gray-900">
       <TinyLeftNavbar />
       <UsersList />
       <HomeChat />
