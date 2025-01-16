@@ -1,11 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
 import emojisReducer from './slices/emojiSlice';
 import userReducer from './slices/userSlice';
+import authReducer from './slices/authSlice';
+import chatReducer from './slices/chatSlice';
+import messageReducer from './slices/messageSlice';
+import typingReducer from './slices/typingSlice';
+import notificationReducer from './slices/notificationSlice';
+import userStatusReducer from './slices/userStatusSlice';
 
 const store = configureStore({
   reducer: {
     emoji: emojisReducer,
     user: userReducer,
+    auth: authReducer,
+    chat: chatReducer,
+    message: messageReducer,
+    typing: typingReducer,
+    notification: notificationReducer,
+    userStatus: userStatusReducer,
   },
 });
 

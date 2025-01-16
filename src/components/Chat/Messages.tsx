@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FaceSmileIcon,
   InformationCircleIcon,
@@ -14,9 +14,23 @@ import ReplyMessage from './ReplyMessage';
 import ReplyAlert from './ReplyAlert';
 // import EmojiGroup from './EmojiGroup';
 import { useRightInfo } from '../../hooks/useRightInfo';
+import msgData from '../../schemas/messageSchema';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import { addMessage } from '../../redux/slices/messageSlice';
 
 const Messages: React.FC = () => {
   const { showVisible } = useRightInfo();
+  const messages = useSelector((state: RootState) =>
+    state.message.messages.filter((msg) => msg.conversaction_id === 1)
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(addMessage(msgData));
+  }, []);
+
   return (
     <div className="h-full flex flex-col flex-grow pr-1">
       <div className="w-full h-15 p-1 bg-white dark:bg-gray-800 border-b">
@@ -40,7 +54,7 @@ const Messages: React.FC = () => {
           <div className="border rounded-full border-white p-1/2">
             <img
               className="w-14 h-14 rounded-full"
-              src="https://cdn.pixabay.com/photo/2017/01/31/21/23/avatar-2027366_960_720.png"
+              src="https://randomuser.me/api/portraits/women/32.jpg"
               alt="avatar"
             />
           </div>
@@ -66,12 +80,20 @@ const Messages: React.FC = () => {
       {/* <ThemeSwitcher /> */}
 
       <div className="w-full px-[10%] flex-grow bg-white dark:bg-gray-900 my-2 overflow-y-scroll scrollbar-thin">
-        <SendMessage />
-        <ReplyMessage />
-        <SendMessage />
-        <ReplyMessage />
-        <SendMessage />
-        <ReplyMessage />
+        {messages.map((msg, i) => {
+          const previousMessage = messages[i - 1];
+          const showAvatar =
+            !previousMessage || previousMessage.sender_id !== msg.sender_id;
+
+          return (
+            <div key={i}>
+              {msg.sender_id === 1 && (
+                <SendMessage message={msg} showAvatar={showAvatar} />
+              )}
+              {msg.sender_id === 2 && <ReplyMessage message={msg} />}
+            </div>
+          );
+        })}
       </div>
       {/* <EmojiGroup /> */}
       <ReplyAlert />

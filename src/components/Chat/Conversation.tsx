@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import ConversationItem from './ConversationItem';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/store';
-import { useDispatch } from 'react-redux';
 import userList from '../../data/users';
 import { addUsers } from '../../redux/slices/userSlice';
 
 const Conversation: React.FC = () => {
   const { users } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  console.log(new Date().toISOString());
 
   useEffect(() => {
     dispatch(addUsers(userList));
