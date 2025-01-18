@@ -1,10 +1,11 @@
 // import { useState } from 'react';
 import './App.css';
+import CustomToast from './components/CustomToast/CustomToast';
 import EmojiProvider from './contexts/EmojiContext';
 import ReplyProvider from './contexts/ReplyContext';
 import RightInfoProvider from './contexts/RightInfoContext';
 import ThemeProvider from './contexts/ThemeContext';
-import MainLayout from './layouts/MainLayout';
+import Router from './routes/Router';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -14,7 +15,8 @@ function App() {
       <RightInfoProvider>
         <ReplyProvider>
           <EmojiProvider>
-            <MainLayout />
+            <CustomToast />
+            <Router />
           </EmojiProvider>
         </ReplyProvider>
       </RightInfoProvider>
