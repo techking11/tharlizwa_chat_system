@@ -9,7 +9,7 @@ const EmojiSearchBar: React.FC = () => {
       <MagnifyingGlassIcon className="size-5 text-gray-500 dark:text-gray-400 absolute top-[45%] pb-1 ml-3 left-0" />
       <Input
         className={clsx(
-          'mt-3 block w-full rounded-full border-none bg-gray-200 dark:bg-white/5 py-2.5 pr-3 pl-10 text-base text-gray-500 dark:text-gray-400',
+          'mt-3 block w-full rounded-full border-none bg-gray-200 dark:bg-white/5 py-1 pr-3 pl-10 text-xs text-gray-500 dark:text-gray-400',
           'focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-none'
         )}
         placeholder="Search Emoji"

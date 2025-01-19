@@ -3,7 +3,7 @@ import Conversation from '../Chat/Conversation';
 
 function UsersList(): React.ReactElement {
   return (
-    <div className="w-[23%] h-screen dark:bg-gray-800 bg-white hidden md:block py-3 border-x">
+    <div className="w-[23%] h-screen dark:bg-gray-800 bg-white hidden md:block py-3 border-x dark:border-none">
       <div className="h-full">
         <div className="text-xl font-extrabold text-gray-600 dark:text-gray-200 px-3">
           Tharlizwa

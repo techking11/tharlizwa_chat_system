@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   FaceSmileIcon,
   InformationCircleIcon,
@@ -10,30 +10,24 @@ import {
 
 import SendMessage from './SendMessage';
 import ReplyMessage from './ReplyMessage';
-// import ThemeSwitcher from '../Theme/ThemeSwicher';
+import ThemeSwitcher from '../Theme/ThemeSwicher';
 import ReplyAlert from './ReplyAlert';
-// import EmojiGroup from './EmojiGroup';
 import { useRightInfo } from '../../hooks/useRightInfo';
-import msgData from '../../schemas/messageSchema';
 import { useSelector } from 'react-redux';
+import { getMessagesByConversactionId } from '../../redux/selectors/messageSelector';
 import { RootState } from '../../redux/store';
-import { useDispatch } from 'react-redux';
-import { addMessage } from '../../redux/slices/messageSlice';
 
-const Messages: React.FC = () => {
+const Messages: React.FC<{ conversactionId: number }> = ({
+  conversactionId,
+}) => {
   const { showVisible } = useRightInfo();
   const messages = useSelector((state: RootState) =>
-    state.message.messages.filter((msg) => msg.conversaction_id === 1)
+    getMessagesByConversactionId(conversactionId)(state)
   );
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(addMessage(msgData));
-  }, []);
 
   return (
     <div className="h-full flex flex-col flex-grow pr-1">
-      <div className="w-full h-15 p-1 bg-white dark:bg-gray-800 border-b">
+      <div className="w-full h-15 p-1 bg-white dark:bg-gray-800 border-b dark:border-none">
         <div className="flex p-2 align-middle items-center">
           <div className="p-2 md:hidden rounded-full mr-1 hover:bg-purple-500 text-white">
             <svg
@@ -59,45 +53,46 @@ const Messages: React.FC = () => {
             />
           </div>
           <div className="flex-grow p-2">
-            <div className="text-md text-gray-700 font-semibold">
+            <div className="text-md text-gray-700 dark:text-gray-100 font-semibold">
               Rey Jhon A. Baquirin
             </div>
             <div className="flex items-center mt-1">
               <div className="w-2 h-2 bg-green-300 rounded-full"></div>
-              <div className="text-xs text-gray-70 ml-1">Online</div>
+              <div className="text-xs text-gray-70 dark:text-gray-100 ml-1">
+                Online
+              </div>
             </div>
           </div>
           <div className="p-2 text-white cursor-pointer rounded-full flex gap-1">
-            <PhoneArrowUpRightIcon className="size-9 p-2 rounded-full text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
-            <VideoCameraIcon className="size-9 p-2 rounded-full text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
+            <PhoneArrowUpRightIcon className="size-9 p-2 rounded-full dark:text-gray-300 text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
+            <VideoCameraIcon className="size-9 p-2 rounded-full dark:text-gray-300 text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
             <button onClick={showVisible}>
-              <InformationCircleIcon className="size-9 p-2 rounded-full text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
+              <InformationCircleIcon className="size-9 p-2 rounded-full dark:text-gray-300 text-gray-600 hover:bg-gray-300 dark:hover:bg-gray-600" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* <ThemeSwitcher /> */}
+      <ThemeSwitcher />
 
       <div className="w-full px-[10%] flex-grow bg-white dark:bg-gray-900 my-2 overflow-y-scroll scrollbar-thin">
-        {messages.map((msg, i) => {
+        {messages.map((message, i: number) => {
           const previousMessage = messages[i - 1];
           const showAvatar =
-            !previousMessage || previousMessage.sender_id !== msg.sender_id;
+            !previousMessage || previousMessage.sender_id !== message.sender_id;
 
           return (
             <div key={i}>
-              {msg.sender_id === 1 && (
-                <SendMessage message={msg} showAvatar={showAvatar} />
+              {message.sender_id === 1 && (
+                <SendMessage message={message} showAvatar={showAvatar} />
               )}
-              {msg.sender_id === 2 && <ReplyMessage message={msg} />}
+              {message.sender_id === 2 && <ReplyMessage message={message} />}
             </div>
           );
         })}
       </div>
-      {/* <EmojiGroup /> */}
       <ReplyAlert />
-      <div className="h-15 p-1 border-t bg-white dark:bg-gray-800">
+      <div className="h-15 p-1 border-t  dark:border-none bg-white dark:bg-gray-800">
         <div className="flex items-center">
           <div className="p-2 text-gray-600 dark:text-gray-200 ">
             <FaceSmileIcon className="size-6" />

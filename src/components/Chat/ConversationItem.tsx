@@ -19,7 +19,7 @@ const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
           'dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 mb-1 rounded ' +
           _class
         }
-        title={speech.message}
+        {...(speech.message.length > 45 ? { title: speech.message } : {})}
       >
         <div className="flex items-center px-1 py-1.5 cursor-pointer">
           <div className="size-12 m-1">

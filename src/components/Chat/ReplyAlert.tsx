@@ -9,11 +9,11 @@ const ReplyAlert: React.FC = () => {
   return (
     <div
       id="alert-5"
-      className="flex items-center py-2 px-5 bg-purple-100 dark:bg-gray-700"
+      className="flex items-center py-2 px-5 bg-gray-100 dark:bg-gray-700"
       role="alert"
     >
-      <div className="ms-3 text-sm font-medium text-gray-700 dark:text-gray-300">
-        <p className="">{reply.name}</p>
+      <div className="ms-3 text-sm text-gray-700 dark:text-gray-300">
+        <p className="font-medium">{reply.name}</p>
         <p className="mt-1">{reply.message}</p>
       </div>
       <button

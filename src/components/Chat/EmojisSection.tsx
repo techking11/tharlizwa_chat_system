@@ -12,19 +12,19 @@ const EmojisSection: React.FC = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center text-base text-gray-500 mt-3">
+      <div className="flex justify-between items-center text-xs text-gray-500">
         <p>Your Reactions</p>
-        <p className="text-gray-400 text-base rounded-md px-2 cursor-pointer hover:bg-gray-600 active:bg-gray-700">
+        <p className="text-gray-400 text-xs rounded-md px-2 cursor-pointer hover:bg-gray-600 active:bg-gray-700">
           Customize
         </p>
       </div>
-      <div className="py-3 flex flex-wrap justify-center items-center gap-4 cursor-pointer">
+      <div className="pt-1 flex flex-wrap justify-center items-center gap-4 cursor-pointer">
         {reactions.map((reaction, index) => (
           <img
             key={index}
             src={reaction.src}
             alt={reaction.alt}
-            className="size-10 active:scale-100 scale-100 hover:scale-125 transition-all duration-150"
+            className="size-5 active:scale-100 scale-100 hover:scale-125 transition-all duration-150"
           />
         ))}
       </div>

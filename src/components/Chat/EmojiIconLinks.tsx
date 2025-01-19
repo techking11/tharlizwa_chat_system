@@ -70,7 +70,7 @@ const EmojiIconLinks: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-wrap gap-4 px-3 cursor-pointer border-t border-gray-300 dark:border-gray-600 py-4 justify-center items-center text-gray-500 dark:text-gray-400">
+    <div className="flex flex-wrap gap-1 px-1 cursor-pointer border-t border-gray-300 dark:border-gray-600 py-2 justify-center items-center text-gray-500 dark:text-gray-400">
       {icons.map((icon, index) => (
         <Tooltip key={index} tooltipText={icon.tooltipText}>
           <a href={icon.href}>{icon.icon}</a>

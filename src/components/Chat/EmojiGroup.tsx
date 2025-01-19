@@ -1,64 +1,44 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { emojisGroupList } from '../../services/emoji';
-import { RootState } from '../../redux/store';
-import * as EmojiActions from '../../redux/slices/emojiSlice';
-import { useEmojisQuery } from '../../hooks/useEmojisQuery';
+import React, { ReactNode } from 'react';
 import EmojiSearchBar from './EmojiSearchbar';
 import EmojiCategory from './EmojiCategory';
 import EmojiIconLinks from './EmojiIconLinks';
 import EmojisSection from './EmojisSection';
-import { useEmojiGroup } from '../../hooks/useEmojiGroup';
+import allEmojis from '../../data/emotions';
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 
-const EmojiGroup: React.FC = () => {
-  const { isVisible } = useEmojiGroup();
-  const dispatch = useDispatch();
-  const { emojisByGroup, groupIndex, offset } = useSelector(
-    (state: RootState) => state.emoji
-  );
-  const currentGroup = emojisGroupList[groupIndex];
-  const { data } = useEmojisQuery(currentGroup, offset);
-
-  useEffect(() => {
-    if (data) {
-      if (data.length === 0) {
-        if (groupIndex < emojisGroupList.length - 1) {
-          dispatch(EmojiActions.incrementGroupIndex());
-          dispatch(EmojiActions.setOffset(0));
-        } else {
-          dispatch(EmojiActions.setHasMore(false));
-        }
-      } else {
-        dispatch(EmojiActions.addEmojis({ group: currentGroup, emojis: data }));
-        dispatch(EmojiActions.setOffset(offset + data.length));
-      }
-    }
-  }, [data, dispatch, currentGroup, offset, groupIndex]);
-
-  if (!isVisible) return null;
+const EmojiGroup: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const allData = allEmojis;
 
   return (
-    <div className="relative text-gray-700">
-      <div className="absolute bottom-0 inline-block w-96 py-1 mb-10 -ml-32 text-white bg-gray-50 shadow-md dark:bg-gray-700 rounded-lg">
-        <div className="w-full max-w-md px-3 z-10">
+    <Popover>
+      <PopoverButton className="block text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">
+        {children}
+      </PopoverButton>
+      <PopoverPanel
+        transition
+        anchor="top"
+        className="divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+      >
+        <div className="w-60 px-3 z-10 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg">
           <EmojiSearchBar />
-          <div className="scrollbar-thin overflow-y-scroll overflow-x-hidden scroll-smooth h-96">
+          <div className="scrollbar-thin overflow-y-scroll overflow-x-hidden scroll-smooth h-60">
             <EmojisSection />
             <div className="py-1 flex flex-wrap gap-3 cursor-pointer">
-              {Object.entries(emojisByGroup).map(([groupName, groupEmojis]) => (
-                <EmojiCategory
-                  key={groupName}
-                  groupName={groupName}
-                  groupEmojis={groupEmojis}
-                />
-              ))}
+              {Object.entries(allData).map(([groupName, groupEmojis]) => {
+                return (
+                  <EmojiCategory
+                    key={groupName}
+                    groupName={groupName}
+                    groupEmojis={groupEmojis}
+                  />
+                );
+              })}
             </div>
           </div>
+          <EmojiIconLinks />
         </div>
-        <EmojiIconLinks />
-      </div>
-    </div>
+      </PopoverPanel>
+    </Popover>
   );
 };
 

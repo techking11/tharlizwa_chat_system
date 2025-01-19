@@ -7,7 +7,7 @@ const RightInfo: React.FC = () => {
   const { isVisible, hideVisible } = useRightInfo();
   if (!isVisible) return null;
   return (
-    <div className="max-w-sm overflow-hidden transition-all ease-in-out duration-700">
+    <div className="max-w-sm overflow-x-hidden min-h-screen bg-white dark:bg-gray-800">
       <div className="relative">
         <div className="size-full bg-[rgba(0,0,0,0.25)] absolute"></div>
         <img
