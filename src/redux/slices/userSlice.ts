@@ -1,18 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import users from '../../schemas/userSchema';
-
-interface Person {
-  id: number;
-  name?: string;
-  phone_no?: string;
-  email?: string;
-  password?: string;
-  profile?: string;
-  status?: string;
-  created_at?: string;
-  updated_at?: string;
-  is_deleted?: boolean;
-}
+import { Person } from '../../types/personTypes';
 
 const initialState: Person[] = users;
 

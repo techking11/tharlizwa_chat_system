@@ -1,27 +1,17 @@
+import React from 'react';
 import {
   CheckIcon,
   EllipsisVerticalIcon,
   FaceSmileIcon,
 } from '@heroicons/react/24/outline';
-import React from 'react';
-import { formatWithShortUnits } from '../../utils/formatDate';
 import EmojiPopover from './EmojiPopover';
 import { useReply } from '../../hooks/useReply';
 import ReplyIcon from '../../icons/ReplyIcon';
 import ThreeDotsPopover from './ThreeDotsPopover';
+import { Message } from '../../types/messageTypes';
+import { formatTime } from '../../utils/formatTime';
 
-interface MessageProps {
-  id: number;
-  conversaction_id: number;
-  sender_id: number;
-  message_type: string; //'text' | 'image' | 'video' | 'audio' | 'file';
-  content: string;
-  created_at: string;
-  updated_at: string;
-  is_deleted: boolean;
-}
-
-const ReplyMessage: React.FC<{ message: MessageProps }> = ({ message }) => {
+const ReplyMessage: React.FC<{ message: Message }> = ({ message }) => {
   const { toggleReply, toggleVisible } = useReply();
   const fetchReply = (name: string, message: string) => {
     toggleReply({ name, message });
@@ -37,7 +27,7 @@ const ReplyMessage: React.FC<{ message: MessageProps }> = ({ message }) => {
           <ReplyIcon classes="size-4 text-gray-500" />
         </button>
         <EmojiPopover>
-          <FaceSmileIcon className="size-5 text-gray-500" />,
+          <FaceSmileIcon className="size-5 text-gray-500" />
         </EmojiPopover>
       </div>
       <div className="flex items-end w-auto bg-blue-100 dark:bg-gray-800 mb-1 ml-3 rounded-xl rounded-br-none">
@@ -46,7 +36,7 @@ const ReplyMessage: React.FC<{ message: MessageProps }> = ({ message }) => {
             {message.content}
           </div>
           <div className="text-xs text-gray-700 dark:text-gray-400 mt-1 text-right">
-            <span className="">{formatWithShortUnits(message.created_at)}</span>
+            <span className="">{formatTime(message.created_at)}</span>
             &ensp;
             <CheckIcon className="size-4 text-blue-700 hidden" />
             <svg

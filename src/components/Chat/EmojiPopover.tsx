@@ -12,11 +12,7 @@ const emojiIcons = [
   { src: '/assets/icons/like.png', alt: 'Like' },
 ];
 
-interface EmojiPopoverProps {
-  children: ReactNode;
-}
-
-const EmojiPopover: React.FC<EmojiPopoverProps> = ({ children }) => {
+const EmojiPopover: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <Popover>
       <PopoverButton className="flex justify-center items-center text-sm/6 font-semibold text-white/50 focus:outline-none data-[active]:text-white data-[hover]:text-white data-[focus]:outline-1 data-[focus]:outline-white">

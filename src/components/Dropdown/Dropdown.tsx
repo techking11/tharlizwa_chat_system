@@ -1,21 +1,48 @@
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
+import {
+  ChevronDownIcon,
+  Cog6ToothIcon,
+  ChatBubbleLeftEllipsisIcon,
+  PhotoIcon,
+  LockClosedIcon,
+  BellSlashIcon,
+  ShieldCheckIcon,
+  FlagIcon,
+  XCircleIcon,
+} from '@heroicons/react/24/outline';
 
 const accordionData = [
   {
-    title: 'Privacy Settings',
-    content:
-      'Manage your privacy preferences, including blocking, restrictions, and encryption settings.',
+    title: 'Chat info',
+    content: [
+      { label: 'View Pinned Messages', icon: ChatBubbleLeftEllipsisIcon },
+    ],
   },
   {
-    title: 'Notification Settings',
-    content:
-      'Adjust your notification preferences, such as muting or enabling sound alerts.',
+    title: 'Customize chat',
+    content: [
+      { label: 'Change theme', icon: Cog6ToothIcon },
+      { label: 'Change emoji', icon: Cog6ToothIcon },
+      { label: 'Edit nicknames', icon: Cog6ToothIcon },
+    ],
   },
   {
-    title: 'Support Options',
-    content:
-      'Contact support or report any issues you face in the application.',
+    title: 'Media & files',
+    content: [
+      { label: 'Media', icon: PhotoIcon },
+      { label: 'Files', icon: PhotoIcon },
+    ],
+  },
+  {
+    title: 'Privacy & support',
+    content: [
+      { label: 'Mute notifications', icon: BellSlashIcon },
+      { label: 'Disappearing messages', icon: ShieldCheckIcon },
+      { label: 'Verify end-to-end encryption', icon: LockClosedIcon },
+      { label: 'Restrict', icon: XCircleIcon },
+      { label: 'Block', icon: XCircleIcon },
+      { label: 'Report', icon: FlagIcon },
+    ],
   },
 ];
 
@@ -31,7 +58,7 @@ const MultiOpenAccordion: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="mt-5 h-[42%]">
       {accordionData.map((item, index) => (
         <div key={index} className="">
           <button
@@ -49,9 +76,17 @@ const MultiOpenAccordion: React.FC = () => {
           </button>
 
           {openIndexes.includes(index) && (
-            <div className="bg-white px-4 text-gray-500 dark:text-gray-100 dark:bg-gray-800">
-              {item.content}
-            </div>
+            <ul className="bg-white dark:bg-gray-800 px-6">
+              {item.content.map((contentItem, idx) => (
+                <li
+                  key={idx}
+                  className="flex items-center space-x-3 py-2 cursor-pointer text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                >
+                  <contentItem.icon className="size-5 text-gray-500 dark:text-gray-400" />
+                  <span>{contentItem.label}</span>
+                </li>
+              ))}
+            </ul>
           )}
         </div>
       ))}

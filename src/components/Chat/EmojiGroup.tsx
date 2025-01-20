@@ -21,7 +21,7 @@ const EmojiGroup: React.FC<{ children: ReactNode }> = ({ children }) => {
       >
         <div className="w-60 px-3 z-10 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-lg">
           <EmojiSearchBar />
-          <div className="scrollbar-thin overflow-y-scroll overflow-x-hidden scroll-smooth h-60">
+          <div className="scrollbar-thin dark:scrollbar-thin-dark overflow-y-scroll overflow-x-hidden scroll-smooth h-60">
             <EmojisSection />
             <div className="py-1 flex flex-wrap gap-3 cursor-pointer">
               {Object.entries(allData).map(([groupName, groupEmojis]) => {

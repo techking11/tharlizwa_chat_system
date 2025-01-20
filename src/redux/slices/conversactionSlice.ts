@@ -1,15 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import conversactions from '../../schemas/conversactionSchema';
-
-interface ConversactionItem {
-  id: number;
-  is_group?: boolean;
-  name?: string;
-  created_by?: number;
-  created_at?: string;
-  updated_at?: string;
-  is_deleted?: boolean;
-}
+import { ConversactionItem } from '../../types/conversactionTypes';
 
 const initialState: ConversactionItem[] = conversactions;
 

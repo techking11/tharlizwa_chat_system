@@ -8,6 +8,7 @@ import typingReducer from './slices/typingSlice';
 import notificationReducer from './slices/notificationSlice';
 import userStatusReducer from './slices/userStatusSlice';
 import conversactionReducer from './slices/conversactionSlice';
+import utilReducer from './slices/utilSlice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     notification: notificationReducer,
     userStatus: userStatusReducer,
     conversaction: conversactionReducer,
+    util: utilReducer,
   },
 });
 

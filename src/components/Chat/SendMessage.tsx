@@ -1,5 +1,4 @@
 import React from 'react';
-import { formatWithShortUnits } from '../../utils/formatDate';
 import {
   EllipsisVerticalIcon,
   FaceSmileIcon,
@@ -8,19 +7,10 @@ import EmojiPopover from './EmojiPopover';
 import ReplyIcon from '../../icons/ReplyIcon';
 import { useReply } from '../../hooks/useReply';
 import ThreeDotsPopover from './ThreeDotsPopover';
+import { Message } from '../../types/messageTypes';
+import { formatTime } from '../../utils/formatTime';
 
-interface MessageProps {
-  id: number;
-  conversaction_id: number;
-  sender_id: number;
-  message_type: string; //'text' | 'image' | 'video' | 'audio' | 'file';
-  content: string;
-  created_at: string;
-  updated_at: string;
-  is_deleted: boolean;
-}
-
-const SendMessage: React.FC<{ message: MessageProps; showAvatar: boolean }> = ({
+const SendMessage: React.FC<{ message: Message; showAvatar: boolean }> = ({
   message,
   showAvatar,
 }) => {
@@ -46,7 +36,7 @@ const SendMessage: React.FC<{ message: MessageProps; showAvatar: boolean }> = ({
             {message.content}
           </div>
           <div className="text-xs text-gray-700 dark:text-gray-400 mt-1 text-right">
-            {formatWithShortUnits(message.created_at)}
+            {formatTime(message.created_at)}
           </div>
         </div>
         <div className="cursor-pointer flex items-center gap-3 opacity-0 group-hover:opacity-100">

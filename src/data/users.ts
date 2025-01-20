@@ -1,13 +1,4 @@
-interface PersonInfo {
-  id: number;
-  name: string;
-  profile: string;
-  time: string;
-  message: string;
-  active: boolean;
-}
-
-const users: PersonInfo[] = [
+export default [
   {
     id: 1,
     name: 'Myo Aung Htet',
@@ -169,5 +160,3 @@ const users: PersonInfo[] = [
     active: false,
   },
 ];
-
-export default users;

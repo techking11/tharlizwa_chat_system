@@ -3,15 +3,17 @@ import { formatWithShortUnits } from '../../utils/formatDate';
 import MessageSignal from './MessageSignal';
 
 interface EachSpeech {
+  id: number;
   name?: string;
   profile?: string;
   time: string;
-  message: string;
-  active?: boolean;
+  message?: string;
+  active?: number;
 }
 
 const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
-  const _class = speech.active ? 'bg-blue-100' : 'bg-white dark:bg-gray-800';
+  const _class =
+    speech.active === speech.id ? 'bg-blue-100' : 'bg-white dark:bg-gray-800';
   return (
     <div>
       <div
@@ -19,7 +21,9 @@ const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
           'dark:bg-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 mb-1 rounded ' +
           _class
         }
-        {...(speech.message.length > 45 ? { title: speech.message } : {})}
+        {...(speech.message && speech?.message?.length > 45
+          ? { title: speech?.message }
+          : {})}
       >
         <div className="flex items-center px-1 py-1.5 cursor-pointer">
           <div className="size-12 m-1">
@@ -40,9 +44,9 @@ const ConversationItem: React.FC<EachSpeech> = (speech: EachSpeech) => {
               </div>
             </div>
             <div className="text-xs text-gray-600 py-1 dark:text-gray-400 mt-1">
-              {speech.message?.length > 45
-                ? speech.message?.substring(0, 45) + '...'
-                : speech.message}
+              {speech.message && speech?.message?.length > 45
+                ? speech?.message?.substring(0, 45) + '...'
+                : speech?.message}
             </div>
           </div>
         </div>

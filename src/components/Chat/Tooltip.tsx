@@ -1,9 +1,9 @@
-interface TooltipProps {
-  children: React.ReactNode;
-  tooltipText: string;
-}
+import { ReactNode } from 'react';
 
-const Tooltip: React.FC<TooltipProps> = ({ children, tooltipText }) => {
+const Tooltip: React.FC<{ children: ReactNode; tooltipText: string }> = ({
+  children,
+  tooltipText,
+}) => {
   return (
     <div className="relative group">
       {children}

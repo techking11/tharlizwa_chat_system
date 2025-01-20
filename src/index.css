@@ -19,6 +19,15 @@
   .scrollbar-thin:hover::-webkit-scrollbar-thumb {
     background: #d1d5db;
   }
+
+  .scrollbar-thin-dark::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 10px;
+  }
+
+  .scrollbar-thin-dark:hover::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
 }
 
 body {

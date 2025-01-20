@@ -9,7 +9,7 @@ export const RightInfoContext = createContext<
 >(undefined);
 
 function RightInfoProvider({ children }: RightInfoProviderProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const showVisible = () => setIsVisible(!isVisible);
   const hideVisible = () => setIsVisible(false);
 

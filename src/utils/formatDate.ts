@@ -29,6 +29,8 @@ export const formatWithShortUnits = (isoDate: string) => {
     ) {
       const timeFormat = format(date, 'hh:mm a');
       return `${timeFormat}`;
+    } else {
+      return formatted;
     }
 
     if (
