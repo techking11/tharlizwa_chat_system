@@ -1,7 +1,7 @@
 import React from 'react';
 import Conversation from '../Chat/Conversation';
 
-function UsersList(): React.ReactElement {
+export default function UsersList() {
   return (
     <div className="w-[23%] h-screen dark:bg-gray-800 bg-white hidden md:block py-3 border-x dark:border-none">
       <div className="h-full">
@@ -39,5 +39,3 @@ function UsersList(): React.ReactElement {
     </div>
   );
 }
-
-export default UsersList;
