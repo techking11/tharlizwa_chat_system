@@ -18,7 +18,6 @@ const Messages: React.FC<{ conversactionId: number }> = ({
     (state: RootState) =>
       state.user.find((user) => user.id === conversactionId) || null
   );
-
   return (
     <div className="h-full flex flex-col flex-grow pr-1">
       <Header user={user} showVisible={showVisible} />

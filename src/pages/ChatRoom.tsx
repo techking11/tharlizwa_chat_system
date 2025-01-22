@@ -4,7 +4,7 @@ import PageLoading from '../components/Loading/PageLoading';
 
 const ChatRoom: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  setTimeout(() => setLoading(false), 500);
+  setTimeout(() => setLoading(false), 3000);
   return (
     <div className="h-full">
       <div className="h-5 bg-white dark:bg-gray-900"></div>

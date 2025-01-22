@@ -4,11 +4,17 @@ import { FormData } from '../../types/signupFormData';
 import FormWrapper from './FormWrapper';
 import { useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import { createOne } from '../../redux/slices/userSlice';
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
   const handleCaptchaChange = (value: string | null) => setCaptchaValue(value);
+  const users = useSelector((state: RootState) => state.user);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone_no: '',
@@ -55,7 +61,29 @@ const Signup: React.FC = () => {
         formData.password.trim() !== '' &&
         captchaValue !== null
       ) {
-        localStorage.setItem('currentUser', JSON.stringify(formData));
+        localStorage.setItem(
+          'currentUser',
+          JSON.stringify({
+            ...formData,
+            id: users.length + 1,
+            status: 'Offline',
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            profile: 'https://randomuser.me/api/portraits/men/35.jpg',
+            is_deleted: false,
+          })
+        );
+        dispatch(
+          createOne({
+            ...formData,
+            id: users.length + 1,
+            status: 'Offline',
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+            profile: 'https://randomuser.me/api/portraits/men/35.jpg',
+            is_deleted: false,
+          })
+        );
         toast.success('Account created successfully.');
         navigate('/');
       }

@@ -15,10 +15,12 @@ const MessageInput: React.FC = () => {
   const dispatch = useDispatch();
   const messages = useSelector((state: RootState) => state.message);
   const activeContion = useSelector((state: RootState) => state.util.active);
+  const user = localStorage.getItem('currentUser');
+  const currentUser = JSON.parse(user);
   const sendMessage: Message = {
     id: messages.length,
     conversaction_id: activeContion,
-    sender_id: 99,
+    sender_id: currentUser === null ? 99 : currentUser.id,
     message_type: 'text',
     content: inputData,
     created_at: new Date().toISOString(),
