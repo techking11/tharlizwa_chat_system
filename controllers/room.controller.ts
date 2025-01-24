@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import { Request, Response } from 'express';
 import * as userService from '../services/user.service';
 import * as messageService from '../services/message.service';
@@ -5,16 +6,19 @@ import * as roomService from '../services/room.service';
 
 export const joinChat = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { name, socketId, roomId } = req.body;
-    if (!name || !socketId || !roomId) {
+    const { name, socket_id, room_id } = req.body;
+    if (!name || !socket_id || !room_id) {
       res
         .status(400)
         .json({ message: 'Name, socketId, and roomId are required' });
       return;
     }
 
-    const user = await userService.createOrUpdateUser(name, socketId);
-    await roomService.addUserToRoom(roomId, user._id as string);
+    const user = await userService.createOrUpdateUser(name, socket_id);
+    await roomService.addUserToRoom(
+      room_id,
+      user._id as mongoose.Types.ObjectId
+    );
     res.status(201).json({ message: 'User joined', user });
   } catch (error) {
     console.error('Error in joinChat:', error);
@@ -27,16 +31,15 @@ export const sendMessage = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { senderId, roomId, username, text } = req.body;
-    if (!senderId || !roomId || !username || !text) {
+    const { sender_id, room_id, text } = req.body;
+    if (!sender_id || !room_id || !text) {
       res.status(400).json({ message: 'All fields are required' });
       return;
     }
 
     const message = await messageService.createMessage(
-      roomId,
-      senderId,
-      username,
+      room_id,
+      sender_id,
       text
     );
     res.status(201).json({ message: 'Message sent', data: message });
@@ -51,8 +54,8 @@ export const getRoomMessages = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { roomId } = req.params;
-    const messages = await messageService.getMessagesByRoomId(roomId);
+    const { room_id } = req.params;
+    const messages = await messageService.getMessagesByRoomId(room_id);
     res.status(200).json(messages);
   } catch (error) {
     console.error('Error in getRoomMessages:', error);
@@ -75,13 +78,13 @@ export const createRoom = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { roomName } = req.body;
-    if (!roomName) {
+    const { name } = req.body;
+    if (!name) {
       res.status(400).json({ message: 'All fields are required' });
       return;
     }
 
-    const message = await roomService.createRoom(roomName);
+    const message = await roomService.createRoom(name);
     res.status(201).json({ message: 'Message sent', data: message });
   } catch (error) {
     console.error('Error in createRoom:', error);

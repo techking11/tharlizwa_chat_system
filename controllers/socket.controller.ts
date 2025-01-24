@@ -6,20 +6,19 @@ export const handleSocketConnection = (io: Server) => {
   io.on('connection', (socket: Socket) => {
     console.log(`User connected: ${socket.id}`);
 
-    socket.on('join', async ({ name, roomId }) => {
+    socket.on('join', async ({ name, room_id }) => {
       await userService.createOrUpdateUser(name, socket.id);
-      socket.join(roomId);
-      console.log(`${name} joined room: ${roomId}`);
+      socket.join(room_id);
+      console.log(`${name} joined room: ${room_id}`);
     });
 
-    socket.on('message', async ({ roomId, senderId, username, text }) => {
+    socket.on('message', async ({ room_id, sender_id, text }) => {
       const message = await messageService.createMessage(
-        roomId,
-        senderId,
-        username,
+        room_id,
+        sender_id,
         text
       );
-      io.to(roomId).emit('message', message);
+      io.to(room_id).emit('message', message);
     });
 
     socket.on('disconnect', async () => {

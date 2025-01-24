@@ -4,8 +4,11 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { Server as SocketIOServer } from 'socket.io';
 import connectMongo from './configs/mongo.config';
-import chatRoutes from './routes/chat.routes';
 import { handleSocketConnection } from './controllers/socket.controller';
+
+import chatRoutes from './routes/chat.routes';
+import userRoutes from './routes/user.routes';
+import participantRoutes from './routes/participant.routes';
 
 connectMongo();
 dotenv.config();
@@ -31,7 +34,9 @@ app.use(
 
 handleSocketConnection(io);
 
-app.use('/api/chat', chatRoutes);
+app.use('/api/v1/chat', chatRoutes);
+app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/participants', participantRoutes);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
